@@ -64,6 +64,15 @@
 				<UnitSet />
 				<IntegerDataEncoding sizeInBits="8" />
 			</BooleanParameterType>
+			<FloatParameterType name="TempWithAlarm">
+				<DefaultAlarm>
+					<StaticAlarmRanges>
+						<WarningRange minInclusive="20.0" maxInclusive="40.0" />
+					</StaticAlarmRanges>
+				</DefaultAlarm>
+				<UnitSet />
+				<FloatDataEncoding sizeInBits="32" />
+			</FloatParameterType>
 			<AggregateParameterType name="vec3_t">
 				<MemberList>
 					<Member name="x" typeRef="float_t" />
@@ -106,7 +115,7 @@
 			<Parameter name="Magnetometer" parameterTypeRef="vec3_t" />
 			<Parameter name="Sunsensor" parameterTypeRef="float_t" />
 			<Parameter name="Gyro" parameterTypeRef="vec3_t" />
-			<Parameter name="Detector_Temp" parameterTypeRef="float_t" />
+			<Parameter name="Detector_Temp" parameterTypeRef="TempWithAlarm" />
 			<Parameter name="Shadow" parameterTypeRef="bool_t" />
 			<Parameter name="Contact_Golbasi_GS" parameterTypeRef="bool_t" />
 			<Parameter name="Contact_Svalbard" parameterTypeRef="bool_t" />
