@@ -21,6 +21,8 @@ def send_tm(simulator, tm):
     header = bytearray(header_length)
 
     while True:
+        tm. Detector_Temp = tm.get_temp()
+
         # Telemetry Data
         pack_into(">f2I22f17B", tlm_data, 0,
                   tm.EpochUSNO,
@@ -134,6 +136,15 @@ class SpacecraftTelemetry:
         self.Mode_SBand = 0
         self.Mode_Safe = 1
 
+
+    def get_temp(self):
+
+        temp = 0.0
+
+        with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
+            temp = int(f.readline()) / 1000.0
+
+        return temp
 
 class Simulator():
 
